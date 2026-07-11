@@ -46,15 +46,12 @@ const CONFIG = {
     {
       type: "chatbox",
       message:
-        "Hey!\n\nFirst of all...\n\nThank you for actually opening this 😭\n\nI wasn't sure if it would even work on your phone.\n\nJust press Send once you've read this.",
+        "Hey, Parika ❤️\n\nI know long distance hasn't always been easy. We've already made it through almost 70% of it, and honestly... it's been one crazy roller coaster. But through every up and down, we've always had each other's backs, and I know we'll keep doing that.\n\nI wish I could've handed you a gift in person, but since I couldn't... I decided to build you something instead.\n\nIt's nothing huge, just a little adventure made with a lot of love.\n\nI really hope you like it. ❤️",
       buttonText: "Send",
     },
     {
       type: "ideas",
       lines: [
-        "At first, I really was going to ask you to test my college project.",
-        "But while making it, I realized this wasn't something I wanted anyone else to open.",
-        "Because... this was always meant for you.",
         "I thought... should I just text you like everyone else will?",
         "Nah... you're a little too special for just another birthday text.",
         "So I spent the last few hours making this little adventure instead.",

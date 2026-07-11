@@ -195,7 +195,7 @@ body {
 
 .idea-big-letters span {
   display: inline-block;
-  font-size: clamp(7rem, 22vw, 14rem);
+  font-size: clamp(10rem, 30vw, 20rem);
   font-weight: 800;
   color: var(--primary);
 }

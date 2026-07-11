@@ -40,7 +40,7 @@
           opacity: 1,
           y: 0,
           ease: "power2.out"
-        }, "+=0.4");
+        }, "+=1.0");
       });
 
       tl.to(el.querySelector(".fake-btn"), {
