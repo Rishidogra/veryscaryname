@@ -329,6 +329,7 @@ body {
   width: clamp(150px, 35vw, 280px);
   height: clamp(150px, 35vw, 280px);
   object-fit: cover;
+object-position: center center;
   border-radius: 50%;
   display: block;
   border: 3px solid rgba(128, 128, 128, 0.15);
@@ -620,4 +621,136 @@ body {
   letter-spacing: 2px;
   text-shadow: 0 0 30px rgba(244, 114, 182, 0.7);
   padding: 0 1.5rem;
+}
+
+/* ── Memory Page ──────────────────────────────────────────────────── */
+.section-memory-page {
+  z-index: 10;
+  pointer-events: auto;
+  overflow-y: auto;
+  padding: 3rem 1.5rem;
+}
+
+.memory-page-container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.memory-title {
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 2.5rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.memory-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.memory-card {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.memory-card .memory-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  margin-bottom: 1rem;
+}
+
+.memory-card .memory-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+object-position: center center;
+  transition: transform 0.5s ease;
+}
+
+.memory-card .memory-image img:hover {
+  transform: scale(1.02);
+}
+
+.memory-card .memory-text {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--text);
+  font-family: 'Georgia', serif;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.memory-continue-btn {
+  padding: 1rem 3rem;
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, var(--primary), #e05aa0);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(244, 114, 182, 0.4);
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.memory-continue-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(244, 114, 182, 0.6);
+}
+
+.memory-continue-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  animation: none;
+  transform: none;
+}
+
+/* Video carousel continue button */
+.video-continue-btn {
+  padding: 1rem 3rem;
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, var(--primary), #e05aa0);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(244, 114, 182, 0.4);
+  animation: pulse 2s infinite ease-in-out;
+  margin-top: 1rem;
+}
+
+.video-continue-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(244, 114, 182, 0.6);
+}
+
+.video-continue-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  animation: none;
+  transform: none;
+}
+
+/* Envelope continue prompt */
+.envelope-continue {
+  text-align: center;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  font-weight: 300;
+  color: var(--primary);
+  opacity: 0;
+  animation: pulse 2s infinite ease-in-out;
+  cursor: pointer;
 }

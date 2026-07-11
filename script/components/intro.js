@@ -15,17 +15,14 @@
           </div>
           <div class="terminal-body">
             <div class="terminal-lines">
-              <!-- Line 1: Initializing... -->
               <div class="terminal-line init-line" style="opacity: 0;">
                 <span class="label">Initializing Project...</span>
               </div>
               
-              <!-- Loading Bar -->
               <div class="loading-bar-container" style="opacity: 0;">
                 <div class="loading-bar"></div>
               </div>
 
-              <!-- Checklists -->
               <div class="terminal-line step-line success" style="opacity: 0;">
                 <span class="label">Loading Assets...</span>
                 <span class="status">✓</span>
@@ -47,41 +44,40 @@
                 <span class="status">✓</span>
               </div>
 
-              <!-- Locating -->
               <div class="terminal-line locating-line" style="opacity: 0;">
                 <span class="label">Locating Reviewer...</span>
               </div>
 
-              <!-- Reviewer Found -->
               <div class="terminal-line found-line success" style="opacity: 0;">
                 <span class="label">Reviewer Found:</span>
                 <span class="status">Parika</span>
               </div>
 
-              <!-- Opening -->
               <div class="terminal-line opening-line" style="opacity: 0;">
                 <span class="label">Opening Project...</span>
               </div>
 
-              <!-- ERROR 404 -->
               <div class="terminal-line error-line error" style="opacity: 0;">
                 <span class="label">ERROR 404</span>
                 <span class="status">FAIL</span>
               </div>
 
-              <!-- Not Found -->
               <div class="terminal-line notfound-line error" style="opacity: 0;">
                 <span class="label">College Project Not Found.</span>
               </div>
 
-              <!-- Searching -->
               <div class="terminal-line searching-line" style="opacity: 0;">
                 <span class="label">Searching...</span>
               </div>
 
-              <!-- Found Something Else -->
-              <div class="terminal-line foundelse-line" style="opacity: 0;">
-                <span class="label">Found Something Else...</span>
+              <div class="terminal-line recovery-line success" style="opacity: 0;">
+                <span class="label">Recovery Successful.</span>
+                <span class="status">✓</span>
+              </div>
+
+              <div class="terminal-line altfound-line success" style="opacity: 0;">
+                <span class="label">Alternative Project Located.</span>
+                <span class="status">✓</span>
               </div>
             </div>
           </div>
@@ -106,12 +102,11 @@
       const errorLine = el.querySelector(".error-line");
       const notfoundLine = el.querySelector(".notfound-line");
       const searchingLine = el.querySelector(".searching-line");
-      const foundelseLine = el.querySelector(".foundelse-line");
+      const recoveryLine = el.querySelector(".recovery-line");
+      const altfoundLine = el.querySelector(".altfound-line");
 
-      // Pause the timeline at the beginning to wait for Click
       tl.pause();
 
-      // Create click prompt
       const clickPrompt = document.createElement("div");
       clickPrompt.className = "click-prompt";
       clickPrompt.innerHTML = '<span>$</span> node project.js<br><br><span class="pulse-text">Click anywhere to run the project...</span>';
@@ -122,7 +117,6 @@
         document.removeEventListener("click", startIntro);
         document.removeEventListener("touchstart", startIntro);
         
-        // Show terminal and play timeline
         terminal.style.display = "block";
         gsap.fromTo(terminal, { opacity: 0, scale: 0.9 }, { duration: 0.5, opacity: 1, scale: 1, ease: "power2.out" });
         tl.play();
@@ -131,8 +125,6 @@
       document.addEventListener("click", startIntro);
       document.addEventListener("touchstart", startIntro);
 
-      // Animation Timeline Sequence (pure static elements!)
-      
       // 1. Initializing...
       tl.to(initLine, { duration: 0.4, opacity: 1, y: 0 });
 
@@ -162,16 +154,19 @@
       tl.to(notfoundLine, { duration: 0.4, opacity: 1, y: 0 }, "+=0.5");
 
       // 9. Searching...
-      tl.to(searchingLine, { duration: 0.4, opacity: 1, y: 0 }, "+=2.0"); // Wait 2 seconds
+      tl.to(searchingLine, { duration: 0.4, opacity: 1, y: 0 }, "+=2.0");
 
-      // 10. Found Something Else...
-      tl.to(foundelseLine, { duration: 0.5, opacity: 1, y: 0 }, "+=1.0");
+      // 10. Recovery Successful
+      tl.to(recoveryLine, { duration: 0.4, opacity: 1, y: 0 }, "+=1.0");
+
+      // 11. Alternative Project Located
+      tl.to(altfoundLine, { duration: 0.5, opacity: 1, y: 0 }, "+=1.0");
 
       // Fade everything to black
       tl.to(el, { duration: 1.0, backgroundColor: "#000000" }, "+=1.5");
       tl.to(terminal, { duration: 0.5, opacity: 0 }, "-=0.5");
 
-      // 11. Dramatic Reveal
+      // 12. Dramatic Reveal
       tl.call(() => {
         terminal.style.display = "none";
         finalReveal.innerHTML = "❤️ ONE BIRTHDAY GIRL ❤️";
@@ -187,7 +182,7 @@
           onStart: () => {
             const audio = document.querySelector(".song");
             if (audio) {
-              audio.querySelector("source").src = "./music/hbd.mpeg";
+              audio.querySelector("source").src = config.music;
               audio.load();
               const playPromise = audio.play();
               if (playPromise !== undefined) {
@@ -200,13 +195,8 @@
         }
       );
 
-      // Change background color slowly to the standard slate-900
       tl.to(document.body, { duration: 3.0, background: "#0f172a", ease: "power1.inOut" }, "-=0.5");
-
-      // Keep it on screen for 3 seconds, then fade out
       tl.to(finalReveal, { duration: 1.0, opacity: 0, y: -30, ease: "power2.in" }, "+=3.0");
-
-      // Completely remove intro section
       tl.to(el, { duration: 0.5, opacity: 0, display: "none" });
     }
   };
